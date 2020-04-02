@@ -22,7 +22,7 @@ window.addEventListener("load", setSize);
 canvas.addEventListener("mousemove", draw);
 
 //Add a listener for the touch move
-canvas.addEventListener("touchmove", drawTouch);
+window.addEventListener("touchmove", drawTouch);
 //Add a listener for the keydown
 window.addEventListener("keydown", keyboard);
 
