@@ -22,9 +22,7 @@ window.addEventListener("load", setSize);
 canvas.addEventListener("mousemove", draw);
 
 //Add a listener for the touch move
-canvas.addEventListener("touchmove", draw);
-canvas.addEventListener("touchstart", draw);
-
+canvas.addEventListener("touchmove", drawTouch);
 //Add a listener for the keydown
 window.addEventListener("keydown", keyboard);
 
@@ -37,6 +35,20 @@ function draw(){
 	canvasBorder = canvas.getBoundingClientRect();
 	x = event.clientX - canvasBorder.left;
 	y = event.clientY - canvasBorder.top;
+	var context = canvas.getContext("2d");
+	console.log("Drawing now...");
+	context.fillStyle = color;
+	context.beginPath();
+	context.arc(x, y, 6, 0, 2 * Math.PI);
+	// context.stroke();
+	context.fill();
+}
+
+function drawTouch(){
+	if(lifted) return;
+	canvasBorder = canvas.getBoundingClientRect();
+	x = event.touches[0].clientX - canvasBorder.left;
+	y = event.touches[0].clientY - canvasBorder.top;
 	var context = canvas.getContext("2d");
 	console.log("Drawing now...");
 	context.fillStyle = color;
